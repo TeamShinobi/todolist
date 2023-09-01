@@ -1,5 +1,4 @@
 import * as React from "react";
-import { createRef } from "react";
 import { StatusBar } from "expo-status-bar";
 import {
   View,

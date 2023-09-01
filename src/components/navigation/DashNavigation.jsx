@@ -1,12 +1,22 @@
-import React from "react";
-import { View, Text } from "react-native";
+import * as React from "react";
+import { createNativeStackNavigator } from "@react-navigation/native-stack";
+import DashboardScreen from "../../screens/DashboardScreen";
 
-const DashNavigation = () => {
+const AuthNavigation = () => {
+  const Stack = createNativeStackNavigator();
+
   return (
-    <View>
-      <Text>ok</Text>
-    </View>
+    <Stack.Navigator screenOptions={{ headerShown: false }}>
+      <Stack.Screen
+        name="Dashboard"
+        component={DashboardScreen}
+        options={{
+          customAnimationOnGesture: true,
+          animation: "slide_from_right",
+        }}
+      />
+    </Stack.Navigator>
   );
 };
 
-export default DashNavigation;
+export default AuthNavigation;

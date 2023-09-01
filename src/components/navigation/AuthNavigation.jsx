@@ -1,11 +1,30 @@
-import React from "react";
-import { View, Text } from "react-native";
+import * as React from "react";
+import { createNativeStackNavigator } from "@react-navigation/native-stack";
+import HomeScreen from "../../screens/HomeScreen";
+import SignupScreen from "../../screens/SignupScreen";
 
 const AuthNavigation = () => {
+  const Stack = createNativeStackNavigator();
+
   return (
-    <View>
-      <Text>ok</Text>
-    </View>
+    <Stack.Navigator screenOptions={{ headerShown: false }}>
+      <Stack.Screen
+        name="Home"
+        component={HomeScreen}
+        options={{
+          customAnimationOnGesture: true,
+          animation: "slide_from_right",
+        }}
+      />
+      <Stack.Screen
+        name="Signup"
+        component={SignupScreen}
+        options={{
+          customAnimationOnGesture: true,
+          animation: "slide_from_right",
+        }}
+      />
+    </Stack.Navigator>
   );
 };
 
