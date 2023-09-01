@@ -11,6 +11,7 @@ const AuthNavigation = () => {
         name="Dashboard"
         component={DashboardScreen}
         options={{
+          headerShown: true,
           customAnimationOnGesture: true,
           animation: "slide_from_right",
         }}

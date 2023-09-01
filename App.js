@@ -6,7 +6,7 @@ import DashNavigation from "./src/components/navigation/DashNavigation";
 export default function App() {
   return (
     <NavigationContainer>
-      {false ? <DashNavigation /> : <AuthNavigation />}
+      {true ? <DashNavigation /> : <AuthNavigation />}
     </NavigationContainer>
   );
 }
