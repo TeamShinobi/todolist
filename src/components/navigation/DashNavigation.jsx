@@ -1,32 +1,30 @@
+import { createDrawerNavigator } from "@react-navigation/drawer";
 import * as React from "react";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import DashboardScreen from "../../screens/DashboardScreen";
-import Icon from "react-native-vector-icons/Entypo";
+import Icon from "react-native-vector-icons/Ionicons";
+import ProfileScreen from "../../screens/ProfileScreen";
+import DrawerList from "../DrawerList";
 
-const AuthNavigation = () => {
+const DashNavigation = () => {
+  const Drawer = createDrawerNavigator();
   const Stack = createNativeStackNavigator();
 
   return (
-    <Stack.Navigator
+    <Drawer.Navigator
       screenOptions={{
         headerShown: true,
-        customAnimationOnGesture: true,
-        animation: "slide_from_right",
-        headerRight: () => (
-          <Icon
-            name="menu"
-            size={40}
-            color="black"
-            onPress={() => {
-              console.log("na press kol");
-            }}
-          />
-        ),
+        swipeEnabled: false,
+        swipeEdgeWidth: 150,
+        drawerPosition: "right",
       }}
+      initialRouteName="Dashboard"
+      drawerContent={DrawerList}
     >
-      <Stack.Screen name="Dashboard" component={DashboardScreen} />
-    </Stack.Navigator>
+      <Drawer.Screen name="ToDo List" component={DashboardScreen} />
+      <Drawer.Screen name="Task Completed" component={ProfileScreen} />
+    </Drawer.Navigator>
   );
 };
 
-export default AuthNavigation;
+export default DashNavigation;
