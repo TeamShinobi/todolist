@@ -31,7 +31,7 @@ const DrawerList = ({ navigation }) => {
         <DrawerItem
           label="Task completed"
           onPress={() => {
-            navigation.navigate("ProfileScreen");
+            navigation.navigate("Task Completed");
           }}
         />
         <DrawerItem

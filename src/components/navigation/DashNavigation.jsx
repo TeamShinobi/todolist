@@ -3,7 +3,7 @@ import * as React from "react";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import DashboardScreen from "../../screens/DashboardScreen";
 import Icon from "react-native-vector-icons/Ionicons";
-import ProfileScreen from "../../screens/ProfileScreen";
+import HistoryScreen from "../../screens/HistoryScreen";
 import DrawerList from "../DrawerList";
 
 const DashNavigation = () => {
@@ -22,7 +22,7 @@ const DashNavigation = () => {
       drawerContent={DrawerList}
     >
       <Drawer.Screen name="ToDo List" component={DashboardScreen} />
-      <Drawer.Screen name="Task Completed" component={ProfileScreen} />
+      <Drawer.Screen name="Task Completed" component={HistoryScreen} />
     </Drawer.Navigator>
   );
 };
