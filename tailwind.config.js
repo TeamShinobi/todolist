@@ -5,6 +5,7 @@ module.exports = {
     "./src/screens/HomeScreen.{js,jsx,ts,tsx}",
     "./src/screens/SignupScreen.{js,jsx,ts,tsx}",
     "./src/screens/DashboardScreen.{js,jsx,ts,tsx}",
+    "./src/screens/HistoryScreen.{js,jsx,ts,tsx}",
   ],
   theme: {
     extend: {},
