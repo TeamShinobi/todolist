@@ -2,7 +2,6 @@ import { createDrawerNavigator } from "@react-navigation/drawer";
 import * as React from "react";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import DashboardScreen from "../../screens/DashboardScreen";
-import Icon from "react-native-vector-icons/Ionicons";
 import HistoryScreen from "../../screens/HistoryScreen";
 import DrawerList from "../DrawerList";
 
