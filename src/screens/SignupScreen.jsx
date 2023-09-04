@@ -1,4 +1,5 @@
 import * as React from "react";
+import { useState } from "react";
 import { StatusBar } from "expo-status-bar";
 import {
   View,
@@ -8,9 +9,20 @@ import {
   TextInput,
   Text as ErrorMessage,
 } from "react-native";
+import axios from "./../plugin/axios/Path";
+
 import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view";
 
 const SignupScreen = ({ navigation }) => {
+  const [userInput, setUserinput] = useState({
+    firstName: "",
+    lastName: "",
+    userName: "",
+    email: "",
+    password: "",
+  });
+  const [error, setError] = useState(null);
+
   return (
     <SafeAreaView className="flex justify-center items-center bg-[#F8F6F6] h-[100vh]">
       <View className=" flex flex-col">
@@ -28,38 +40,43 @@ const SignupScreen = ({ navigation }) => {
             <TextInput
               className=" border-[1px] rounded-lg border-b-gray-950 h-[40px] p-2 mb-5"
               placeholder="First Name"
-              type="text"
-              value={undefined}
-              onChangeText={undefined}
+              value={userInput.firstName}
+              onChangeText={(value) =>
+                setUserinput({ ...userInput, firstName: value })
+              }
             />
             <TextInput
               className=" border-[1px] rounded-lg border-b-gray-950 h-[40px] p-2 mb-5"
               placeholder="Last Name"
-              type="text"
-              value={undefined}
-              onChangeText={undefined}
+              value={userInput.lastName}
+              onChangeText={(value) =>
+                setUserinput({ ...userInput, lastName: value })
+              }
             />
             <TextInput
               className=" border-[1px] rounded-lg border-b-gray-950 h-[40px] p-2 mb-5"
               placeholder="Username"
-              type="text"
-              value={undefined}
-              onChangeText={undefined}
+              value={userInput.userName}
+              onChangeText={(value) =>
+                setUserinput({ ...userInput, userName: value })
+              }
             />
             <TextInput
               className=" border-[1px] rounded-lg border-b-gray-950 h-[40px] p-2 mb-5"
               placeholder="Email"
-              type="email"
-              value={undefined}
-              onChangeText={undefined}
+              value={userInput.email}
+              onChangeText={(value) =>
+                setUserinput({ ...userInput, email: value })
+              }
             />
             <TextInput
               className=" border-[1px] rounded-lg h-[40px] p-2 mb-7"
               placeholder="Password"
               secureTextEntry={true}
-              type="password"
-              value={undefined}
-              onChangeText={undefined}
+              value={userInput.password}
+              onChangeText={(value) =>
+                setUserinput({ ...userInput, password: value })
+              }
             />
           </KeyboardAwareScrollView>
           <View className="flex flex-row justify-end">
@@ -69,7 +86,32 @@ const SignupScreen = ({ navigation }) => {
             >
               <Text className="text-black font-bold text-[16px]">SIGN IN</Text>
             </TouchableOpacity>
-            <TouchableOpacity className="bg-black h-[40px] justify-center items-center flex w-[25%] rounded-xl">
+            <TouchableOpacity
+              className="bg-black h-[40px] justify-center items-center flex w-[25%] rounded-xl"
+              onPress={() => {
+                axios
+                  .post(`account/auth/users/`, {
+                    username: userInput.userName,
+                    email: userInput.email,
+                    first_name: userInput.firstName,
+                    last_name: userInput.lastName,
+                    password: userInput.password,
+                  })
+                  .then((response) => {
+                    console.log("User registration successful:", response.data);
+                  })
+                  .catch(function (error) {
+                    console.error("An error occurred:", error);
+                  });
+                // console.log({
+                //   Username: userInput.userName,
+                //   Email: userInput.email,
+                //   FirstName: userInput.firstName,
+                //   LastName: userInput.lastName,
+                //   Password: userInput.password,
+                // });
+              }}
+            >
               <Text className="text-white font-bold text-[16px]">CREATE</Text>
             </TouchableOpacity>
           </View>

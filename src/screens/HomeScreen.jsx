@@ -10,7 +10,6 @@ import {
   Text as ErrorMessage,
 } from "react-native";
 import axios from "./../plugin/axios/Path";
-// import axios from "axios";
 
 const HomeScreen = ({ navigation }) => {
   const [userInput, setUserinput] = useState({
